@@ -1,0 +1,9 @@
+<? $logContent = $tplClass->getParam('log', $tplParams); ?>
+<? if(!empty($logContent)): ?>
+<div class="section">
+    <div class="sectionHeader">Отчет</div>
+    <div class="sectionBody" style="padding:10px 20px;">
+        <?=$logContent;?>
+    </div>
+</div>
+<? endif; ?>

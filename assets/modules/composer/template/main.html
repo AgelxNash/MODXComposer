@@ -1,0 +1,44 @@
+<div id="actions">
+    <ul class="actionButtons">
+        <?=$tplClass->showBody('action', array('id'=>'updateComposerBtn', 'href'=>$tplClass->makeUrl('self-update'), 'title'=>'Обновить composer', 'icon'=>"media/style/{$manager_theme}/images/icons/globe.gif")); ?>
+        <?=$tplClass->showBody('action', array('id'=>'reloadBtn', 'href'=>$tplClass->makeUrl('update'), 'title'=>'Обновить компоненты', 'icon'=>"media/style/{$manager_theme}/images/icons/bkmanager.gif")); ?>
+        <?=$tplClass->showBody('action', array('id'=>'closeBtn', 'href'=>$modx->getManagerPath().'?a=106', 'title'=>'Закрыть', 'icon'=>"media/style/{$manager_theme}/images/icons/stop.png")); ?>
+    </ul>
+</div>
+<h1><?php echo $content['name']?></h1>
+    <div id="logBlock"><?=$tplClass->showBody('log', array('log'=> $tplClass->getParam('log', $tplParams)));?></div>
+
+    <?=$tplClass->InstallForm();?>
+
+    <script type="text/javascript" src="media/script/tabpane.js"></script>
+    <div class="sectionBody" style="padding:10px 20px;">
+
+        <div class="tab-pane" id="modulePane">
+            <script type="text/javascript">
+                tpModule = new WebFXTabPane( document.getElementById( "modulePane"), false );
+            </script>
+            <?=$tplClass->showBody('tab', array('id'=>'lister', 'title'=>'Установленное', 'content'=>$tplClass->ListActive())); ?>
+            <?=$tplClass->showBody('tab', array('id'=>'config', 'title'=>'composer.json', 'content'=>$tplClass->configEdit())); ?>
+            <?=$tplClass->showBody('tab', array('id'=>'helper', 'title'=>'Помощь', 'content'=>$tplClass->showBody('helper'))); ?>
+        </div>
+    </div>
+<p style="text-align:center">
+    <? $version = $tplClass->getParam('composer-version', $tplParams);?>
+    <? if(!empty($version)): ?>
+        <small><strong>Версия composer</strong>: <?=$version;?></small>
+    <? endif; ?>
+
+    <br />
+
+    <? $date = $tplClass->getParam('composer-date', $tplParams);?>
+    <? if(!empty($date)): ?>
+        <small><strong>Дата релиза</strong>: <?=$date;?></small>
+    <? endif; ?>
+</p>
+<style>
+    ol li{ margin-left:40px;}
+    ul li{font-weight:bold;margin-top:20px;}
+    ul li li{font-weight:normal;margin:5px 0px 5px 0px;}
+    pre {font-size:13px; background:#eee;border:1px solid #aaa;}
+    table td { vertical-align: top;}
+</style>

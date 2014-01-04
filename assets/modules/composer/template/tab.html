@@ -1,0 +1,5 @@
+<div class="tab-page" id="<?=$tplClass->getParam('id', $tplParams, 'tabID'); ?>">
+    <h2 class="tab"><?=$tplClass->getParam('title', $tplParams, 'title'); ?></h2>
+    <script type="text/javascript">tpModule.addTabPage( document.getElementById( "<?=$tplClass->getParam('id', $tplParams, 'tabID'); ?>" ) );</script>
+    <?=$tplClass->getParam('content', $tplParams); ?>
+</div>

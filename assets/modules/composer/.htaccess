@@ -1,0 +1,6 @@
+Order deny,allow
+Deny from all
+
+<Files init.php>
+	Allow from All
+</Files>

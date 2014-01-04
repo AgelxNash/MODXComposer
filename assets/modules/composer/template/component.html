@@ -1,0 +1,19 @@
+<p>В данной таблице перечислены все установленные пакеты. Удалить пакет можно 2 способами:</p>
+<ol>
+    <li>Исключить лишнее из секции require в composer.json и нажать кнопку "Обновить компоненты".</li>
+    <li>Нажать на крестик рядом с названием пакета. (<em>Некоторые пакеты зависят от других пакетов. Поэтому при удалении основного пакета, все дочерние так же будут удалены)</em></li>
+</ol>
+<table class='grid' cellpadding='1' cellspacing='1'>
+    <thead>
+        <tr>
+            <td class='gridHeader'></td>
+            <td class='gridHeader'>Пакет</td>
+            <td class='gridHeader'>Версия</td>
+            <td class='gridHeader'>Описание</td>
+            <td class='gridHeader'>Лицензия</td>
+            <td class='gridHeader'>Авторы</td>
+            <td class='gridHeader'>Вид пакета</td>
+        </tr>
+    </thead>
+    <?=$tplClass->getParam('grid', $tplParams); ?>
+</table>

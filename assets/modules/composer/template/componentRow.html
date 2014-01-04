@@ -1,0 +1,43 @@
+<?
+    $class = $tplClass->getParam('id', $tplParams);
+    $class = ($class % 2) ? "gridAltItem" : "gridItem";
+?>
+<?  $deleteUrl = $tplClass->makeUrl('delete', array('package'=>$tplClass->getParam('name', $tplParams))); ?>
+<tr>
+    <td class="<?=$class;?>">
+        <? if($tplClass->getParam('main', $tplParams, false) === true): ?>
+            <a href="<?=$deleteUrl;?>" onclick="alert('Действительно удалить?');"><img src="media/style/<?=$manager_theme;?>/images/icons/delete.png" /></a>
+        <? else: ?>
+            <img src="media/style/<?=$manager_theme;?>/images/icons/secured.gif" />
+        <? endif; ?>
+    </td>
+    <td class="<?=$class;?>">
+        <? if($tplClass->getParam('main', $tplParams, false) === true): ?>
+            <a href="<?=$deleteUrl;?>" onclick="alert('Действительно удалить?');"><?=$tplClass->getParam('name', $tplParams); ?></a>
+        <? else: ?>
+            <?=$tplClass->getParam('name', $tplParams); ?>
+        <? endif; ?>
+    </td>
+    <td class="<?=$class;?>"><?=$tplClass->getParam('version', $tplParams); ?></td>
+    <td class="<?=$class;?>"><?=$tplClass->getParam('description', $tplParams); ?></td>
+    <td class="<?=$class;?>"><?=current($tplClass->getParam('license', $tplParams, array(''))); ?></td>
+    <td class="<?=$class;?>"><? $author = $tplClass->getParam('authors', $tplParams, array());?>
+        <? foreach($author as $item): ?>
+            <? $authorName = $tplClass->getParam('name', $item); ?>
+            <? $authorEmail = $tplClass->getParam('email', $item); ?>
+            <? $authorUrl = $tplClass->getParam('homepage', $item); ?>
+
+            <? if(!empty($authorUrl)): ?>
+                <a href="<?=$authorUrl;?>" target="_blank"><?=$authorName;?></a>
+            <? else: ?>
+                <?=$authorName;?>
+            <? endif; ?>
+
+            <? if(!empty($authorEmail)): ?>
+                <br /><?=$authorEmail;?>
+            <? endif; ?>
+        <? endforeach;?>
+    </td>
+
+    <td class="<?=$class;?>"><?=$tplClass->getParam('type', $tplParams); ?></td>
+</tr>
